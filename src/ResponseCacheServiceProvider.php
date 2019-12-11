@@ -14,8 +14,9 @@ class ResponseCacheServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $configPath = $this->app->basePath() . '/config/';
         $this->publishes([
-            __DIR__.'/../config/responsecache.php' => config_path('responsecache.php'),
+            __DIR__.'/../config/responsecache.php' => $configPath . 'responsecache.php',
         ], 'config');
 
         $this->app->bind(CacheProfile::class, function (Container $app) {
